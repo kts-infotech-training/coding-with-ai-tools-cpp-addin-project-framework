@@ -1,0 +1,50 @@
+﻿// SamplePlugin.idl : IDL source for SamplePlugin
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (SamplePlugin.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(CA4AF95C-E63B-4F71-AF72-0C5C5EC2D893),
+	version(1.0),
+]
+library SamplePluginLib
+{
+	importlib("stdole2.tlb");
+	
+	[
+		uuid(B1C2D3E4-F5A6-7890-1234-56789ABCDE01)
+	]
+	coclass VehiclePlugin
+	{
+		[default] interface IUnknown;
+	};
+	
+	[
+		uuid(B1C2D3E4-F5A6-7890-1234-56789ABCDE02)
+	]
+	coclass BusObject
+	{
+		[default] interface IUnknown;
+	};
+	
+	[
+		uuid(B1C2D3E4-F5A6-7890-1234-56789ABCDE03)
+	]
+	coclass JCBObject
+	{
+		[default] interface IUnknown;
+	};
+	
+	[
+		uuid(B1C2D3E4-F5A6-7890-1234-56789ABCDE04)
+	]
+	coclass TruckObject
+	{
+		[default] interface IUnknown;
+	};
+};
+

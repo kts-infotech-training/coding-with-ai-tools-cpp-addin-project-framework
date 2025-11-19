@@ -1,0 +1,29 @@
+HKCR
+{
+	SamplePlugin.VehiclePlugin.1 = s 'VehiclePlugin Class'
+	{
+		CLSID = s '{B1C2D3E4-F5A6-7890-1234-56789ABCDE01}'
+	}
+	SamplePlugin.VehiclePlugin = s 'VehiclePlugin Class'
+	{
+		CLSID = s '{B1C2D3E4-F5A6-7890-1234-56789ABCDE01}'
+		CurVer = s 'SamplePlugin.VehiclePlugin.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {B1C2D3E4-F5A6-7890-1234-56789ABCDE01} = s 'VehiclePlugin Class'
+		{
+			ProgID = s 'SamplePlugin.VehiclePlugin.1'
+			VersionIndependentProgID = s 'SamplePlugin.VehiclePlugin'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{CA4AF95C-E63B-4F71-AF72-0C5C5EC2D893}'
+			'Implemented Categories'
+			{
+				'{3A2F1B5C-6D8E-4F9A-B2C3-E5F7A8D9C0B1}'
+			}
+		}
+	}
+}

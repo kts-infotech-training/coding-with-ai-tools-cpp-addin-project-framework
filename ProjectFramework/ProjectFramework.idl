@@ -1,0 +1,50 @@
+// ProjectFramework.idl : type library source for ProjectFramework.exe
+
+// This file will be processed by the MIDL compiler to produce the
+// type library (ProjectFramework.tlb).
+
+[ uuid(0D49BDDB-C6E9-4DE6-BD08-FDFE9E3794CA), version(1.0) ]
+library ProjectFramework
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	// Plugin Interface
+	[ object, uuid(A5F2B3C4-D5E6-47F8-9A0B-1C2D3E4F5A6B), dual, pointer_default(unique) ]
+	interface IPlugin : IDispatch
+	{
+		[id(1)] HRESULT GetPluginName([out, retval] BSTR* pName);
+		[id(2)] HRESULT GetPluginVersion([out, retval] BSTR* pVersion);
+		[id(3)] HRESULT GetObjectCount([out, retval] long* pCount);
+		[id(4)] HRESULT GetObjectName([in] long index, [out, retval] BSTR* pName);
+		[id(5)] HRESULT CreateObject([in] long index, [out, retval] IDispatch** ppObject);
+		[id(6)] HRESULT Initialize([in] IDispatch* pHost);
+		[id(7)] HRESULT Shutdown();
+	};
+
+	// 3D Object Interface
+	[ object, uuid(B6F3C4D5-E6F7-48A9-0B1C-2D3E4F5A6B7C), dual, pointer_default(unique) ]
+	interface I3DObject : IDispatch
+	{
+		[id(1)] HRESULT GetObjectName([out, retval] BSTR* pName);
+		[id(2)] HRESULT Draw([in] long hDC, [in] long rectLeft, [in] long rectTop, [in] long rectRight, [in] long rectBottom, [in] double angleX, [in] double angleY);
+	};
+
+	//  Primary dispatch interface for CProjectFrameworkDoc
+	
+	[ uuid(68DA994E-AF0D-4ECB-8110-00B1FBED4F1C) ]
+	dispinterface IProjectFramework
+	{
+		properties:
+			
+		methods:
+	};
+
+	//  Class information for CProjectFrameworkDoc
+	
+	[ uuid(97C65011-D049-4BC1-A57A-20B791C4D314) ]
+	coclass CProjectFrameworkDoc
+	{
+		[default] dispinterface IProjectFramework;
+	};
+};
